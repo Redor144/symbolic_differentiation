@@ -83,12 +83,12 @@ print(simplified)  # ((2 * x) + 3)
 - **Funkcje trygonometryczne**: `sin`, `cos`, `tan`, `sec`.
 - **Funkcje odwrotne funkcji trygonmetrycznych**: `asin`, `acos`, `atan`.
 - **Funkcje hiperboliczne**: `sinh`, `cosh`, `tanh`.
-- **Logarytmy**: `ln` (logarytm naturalny).
+- **Logarytmy**: `ln` (logarytm naturalny), `log` (logarytm o zmiennej podstawie).
 - **Inne**: `sqrt` (pierwiastek), `abs` (wartość bezwzględna), `exp` (funkcja wykładnicza).
 
 ## Rozwój i Ulepszenia
 ### Możliwe rozszerzenia:
-- Dodanie obsługi większej liczby funkcji matematycznych, np. `log(base, x)`.
+- Dodanie obsługi większej liczby funkcji matematycznych.
 - Obsługa przedziałów i operacji na funkcjach wielowymiarowych.
 - Integracja z narzędziami wizualizacyjnymi do rysowania wykresów.
 
