@@ -52,7 +52,8 @@ symbolic_differenation/
 │   ├── symbolic_math.py  # Klasy reprezentujące symbole matematyczne.
 │   ├── lexer.py          # Lexer: analiza leksykalna (tokenizacja).
 │   ├── parser.py         # Parser: analiza składniowa wyrażeń.
-├── main.py               # Główny plik demonstracyjny.
+├── main.py               # Podstawowy plik demonstracyjny.
+├── main_gui.py           # Plik demonstracyjny z interfejsem graficznym.
 └── requirements.txt      # Lista zależności.
 ```
 
@@ -61,6 +62,7 @@ symbolic_differenation/
 - **`lexer.py`**: Definicja tokenów i analizatora leksykalnego.
 - **`parser.py`**: Parser, który generuje wewnętrzną reprezentację wyrażeń.
 - **`main.py`**: Przykładowe użycie biblioteki.
+- **`main_gui.py`**: Użycie interfejsu graficznego do wejścia/wyjścia.
 
 ## Wymagania
 - Python 3.8+
