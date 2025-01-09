@@ -29,6 +29,8 @@ if __name__ == '__main__':
         "log(2, log(2, x))",
         "log(2, x^2)",
         "log(2, x)",
+        "lm(x)",
+        "lm*(x^2)"
     ]
 
     for expr in expressions:

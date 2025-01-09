@@ -101,6 +101,18 @@ def p_expression_constants(p):
         p[0] = Constant(2.718281828459045)
 
 def p_error(p):
-    print(f"Błąd składniowy: {p.value if p else 'koniec wyrażenia'}")
+    if p:
+        error_message = f"Błąd składniowy: {p.value} na pozycji linia: {p.lineno}, kolumna: {find_column(p.lexer.lexdata, p.lexpos)}"
+    else:
+        error_message = "Błąd składniowy: koniec wyrażenia"
+    raise SyntaxError(error_message)
 
+def find_column(input, lexpos):
+    last_cr = input.rfind('\n', 0, lexpos)
+    if last_cr < 0:
+        column = lexpos + 1
+    else:
+        column = lexpos - last_cr
+    return column
+    
 parser = yacc.yacc()
