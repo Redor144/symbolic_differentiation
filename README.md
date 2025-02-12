@@ -1,16 +1,16 @@
-# Symboliczne Różniczkowanie i Upraszczanie Wyrażeń Matematycznych
+# 📌 Symboliczne Różniczkowanie i Upraszczanie Wyrażeń Matematycznych
 
-## Opis Projektu
-Projekt jest biblioteką napisaną w Pythonie, która umożliwia symboliczne różniczkowanie, upraszczanie oraz przetwarzanie wyrażeń matematycznych. Obsługiwane są podstawowe operacje arytmetyczne, funkcje trygonometryczne, logarytmy oraz inne funkcje matematyczne. Projekt jest zaimplementowany w modularny sposób, z wykorzystaniem bibliotek PLY (Python Lex-Yacc) do analizy składniowej i leksykalnej.
+## 📖 Opis Projektu
+Projekt jest biblioteką napisaną w Pythonie, która umożliwia **symboliczne różniczkowanie**, **upraszczanie** oraz **przetwarzanie** wyrażeń matematycznych. Obsługiwane są podstawowe operacje arytmetyczne, funkcje trygonometryczne, logarytmy oraz inne funkcje matematyczne. Projekt jest zaimplementowany w **modularny sposób**, z wykorzystaniem bibliotek **PLY (Python Lex-Yacc)** do analizy składniowej i leksykalnej.
 
-### Kluczowe Funkcjonalności
-- **Symboliczne różniczkowanie**: Automatyczne obliczanie pochodnych dla wyrażeń matematycznych.
-- **Upraszczanie wyrażeń**: Redukcja wyrażeń do prostszych postaci, np. `ln(e)` do `1`.
-- **Obsługa funkcji matematycznych**: Trygonometrycznych (sin, cos, tan), hiperbolicznych (sinh, cosh, tanh), logarytmicznych (ln), potęgowych, pierwiastków, i innych.
-- **Obsługa zmiennych i stałych**: Możliwość pracy z dowolnymi zmiennymi oraz predefiniowanymi stałymi (`pi`, `e`).
-- **Modularna budowa**: Lexer, parser i system symboli są rozdzielone w osobnych modułach.
+### ✨ Kluczowe Funkcjonalności
+- 🧮 **Symboliczne różniczkowanie**: Automatyczne obliczanie pochodnych dla wyrażeń matematycznych.
+- 🔄 **Upraszczanie wyrażeń**: Redukcja wyrażeń do prostszych postaci, np. `ln(e)` do `1`.
+- 📏 **Obsługa funkcji matematycznych**: Trygonometrycznych (`sin`, `cos`, `tan`), hiperbolicznych (`sinh`, `cosh`, `tanh`), logarytmicznych (`ln`), potęgowych, pierwiastków i innych.
+- 🔤 **Obsługa zmiennych i stałych**: Możliwość pracy z dowolnymi zmiennymi oraz predefiniowanymi stałymi (`pi`, `e`).
+- 📦 **Modularna budowa**: Lexer, parser i system symboli są rozdzielone w osobnych modułach.
 
-## Gramatyka w postacji BNF
+## 📜 Gramatyka w Postaci BNF
 ```
 <expression> ::= <addition_or_subtraction>
 
@@ -48,7 +48,7 @@ Projekt jest biblioteką napisaną w Pythonie, która umożliwia symboliczne ró
                   | "atan" "(" <expression> ")"
                   | "tan" "(" <expression> ")"
                   | "sec" "(" <expression> ")"
-		  | "log" "(" <expression> "," <expression> ")"
+                  | "log" "(" <expression> "," <expression> ")"
 
 <group> ::= "(" <expression> ")"
 
@@ -59,8 +59,7 @@ Projekt jest biblioteką napisaną w Pythonie, która umożliwia symboliczne ró
 <variable> ::= {a-zA-Z_} {a-zA-Z0-9_}*
 ```
 
-## Struktura Projektu
-
+## 📂 Struktura Projektu
 ```
 symbolic_differenation/
 ├── symbolic/
@@ -73,42 +72,34 @@ symbolic_differenation/
 └── requirements.txt      # Lista zależności.
 ```
 
-### Pliki
-- **`symbols.py`**: Definicje klas matematycznych, takich jak `Symbol`, `Variable`, `Constant`, `Add`, `Mul`, `Ln`, itp.
-- **`lexer.py`**: Definicja tokenów i analizatora leksykalnego.
-- **`parser.py`**: Parser, który generuje wewnętrzną reprezentację wyrażeń.
-- **`main.py`**: Przykładowe użycie biblioteki.
-- **`main_gui.py`**: Użycie interfejsu graficznego do wejścia/wyjścia.
+## 🔧 Instalacja
+Wymagania:
+- 🐍 Python 3.8+
+- 📦 Biblioteka `ply`
 
-## Wymagania
-- Python 3.8+
-- Biblioteka `ply`
-
-### Instalacja zależności
-Użyj poniższego polecenia, aby zainstalować wymagane biblioteki:
-
-```
+### 🛠 Instalacja zależności
+```sh
 pip install -r requirements.txt
 ```
 
-## Jak uruchomić
+## 🚀 Jak uruchomić
 1. Upewnij się, że wszystkie pliki są w odpowiednich lokalizacjach.
 2. Uruchom `main.py`, aby przetestować różne wyrażenia matematyczne:
 
-```
+```sh
 python main.py
 ```
 
-Przykładowy wynik:
+📌 Przykładowy wynik:
 ```
 Wyrażenie: ln(x^2)
 Parsowane wyrażenie: ln((x^2))
 Pochodna: ((2 * x) * ((x^2)^-1))
 ```
 
-## Przykłady Użycia
+## 🎯 Przykłady Użycia
 
-### Tworzenie wyrażeń
+### ✏️ Tworzenie wyrażeń
 ```python
 from symbolic.parser import parser
 
@@ -117,19 +108,19 @@ expr = parser.parse(expr_str)
 print(expr)  # ((x^2) + (3 * x)) + 5)
 ```
 
-### Różniczkowanie
+### 🔢 Różniczkowanie
 ```python
 derivative = expr.differentiate("x")
 print(derivative)  # (((((2 * (x^(2 + -1))) * 1) + (((x^2) * ln(x)) * 0)) + ((0 * x) + (3 * 1))) + 0)
 ```
 
-### Upraszczanie
+### 🔄 Upraszczanie
 ```python
 simplified = derivative.simplify()
 print(simplified)  # ((2 * x) + 3)
 ```
 
-## Obsługiwane Funkcje Matematyczne
+## 🏗 Obsługiwane Funkcje Matematyczne
 - **Podstawowe operatory**: `+`, `-`, `*`, `/`, `^` (potęgowanie).
 - **Funkcje trygonometryczne**: `sin`, `cos`, `tan`, `sec`.
 - **Funkcje odwrotne funkcji trygonmetrycznych**: `asin`, `acos`, `atan`.
@@ -137,11 +128,6 @@ print(simplified)  # ((2 * x) + 3)
 - **Logarytmy**: `ln` (logarytm naturalny), `log` (logarytm o zmiennej podstawie).
 - **Inne**: `sqrt` (pierwiastek), `abs` (wartość bezwzględna), `exp` (funkcja wykładnicza).
 
-## Rozwój i Ulepszenia
-### Możliwe rozszerzenia:
-- Dodanie obsługi większej liczby funkcji matematycznych.
-- Obsługa przedziałów i operacji na funkcjach wielowymiarowych.
-- Integracja z narzędziami wizualizacyjnymi do rysowania wykresów.
+## 📌 Licencja
+Projekt jest dostępny na licencji **MIT** ✅
 
-## Licencja
-Projekt jest dostępny na licencji MIT
