@@ -12,32 +12,48 @@ Projekt jest biblioteką napisaną w Pythonie, która umożliwia symboliczne ró
 
 ## Gramatyka w postacji BNF
 ```
-<expression> ::= <expression> "+" <expression>              // Rule 1
-               | <expression> "-" <expression>              // Rule 2
-               | <expression> "*" <expression>              // Rule 3
-               | <expression> "/" <expression>              // Rule 4
-               | <expression> "^" <expression>              // Rule 5
-               | "-" <expression>                           // Rule 6
-               | "sin" "(" <expression> ")"                 // Rule 7
-               | "cos" "(" <expression> ")"                 // Rule 8
-               | "ln" "(" <expression> ")"                  // Rule 9
-               | "sqrt" "(" <expression> ")"                // Rule 10
-               | "abs" "(" <expression> ")"                 // Rule 11
-               | "exp" "(" <expression> ")"                 // Rule 12
-               | "sinh" "(" <expression> ")"                // Rule 13
-               | "cosh" "(" <expression> ")"                // Rule 14
-               | "tanh" "(" <expression> ")"                // Rule 15
-               | "asin" "(" <expression> ")"                // Rule 16
-               | "acos" "(" <expression> ")"                // Rule 17
-               | "atan" "(" <expression> ")"                // Rule 18
-               | "tan" "(" <expression> ")"                 // Rule 19
-               | "sec" "(" <expression> ")"                 // Rule 20
-               | "(" <expression> ")"                       // Rule 21
-               | <number>                                   // Rule 22
-               | <variable>                                 // Rule 23
-               | "pi"                                       // Rule 24
-               | "e"                                        // Rule 25
-               |"log" "(" <expression> "," <expression> ")" // Rule 26
+<expression> ::= <addition_or_subtraction>
+
+<addition_or_subtraction> ::= <multiplication_or_division> "+" <addition_or_subtraction>
+                            | <multiplication_or_division> "-" <addition_or_subtraction>
+                            | <multiplication_or_division>
+
+<multiplication_or_division> ::= <exponentiation> "*" <multiplication_or_division>
+                               | <exponentiation> "/" <multiplication_or_division>
+                               | <exponentiation>
+
+<exponentiation> ::= <unary_operation> "^" <exponentiation>
+                   | <unary_operation>
+
+<unary_operation> ::= "-" <primary_expression>
+                    | <primary_expression>
+
+<primary_expression> ::= <function_call>
+                       | <group>
+                       | <constant>
+                       | <number>
+                       | <variable>
+
+<function_call> ::= "sin" "(" <expression> ")"
+                  | "cos" "(" <expression> ")"
+                  | "ln" "(" <expression> ")"
+                  | "sqrt" "(" <expression> ")"
+                  | "abs" "(" <expression> ")"
+                  | "exp" "(" <expression> ")"
+                  | "sinh" "(" <expression> ")"
+                  | "cosh" "(" <expression> ")"
+                  | "tanh" "(" <expression> ")"
+                  | "asin" "(" <expression> ")"
+                  | "acos" "(" <expression> ")"
+                  | "atan" "(" <expression> ")"
+                  | "tan" "(" <expression> ")"
+                  | "sec" "(" <expression> ")"
+		  | "log" "(" <expression> "," <expression> ")"
+
+<group> ::= "(" <expression> ")"
+
+<constant> ::= "pi"
+             | "e"
 
 <number> ::= {0-9}+ ("." {0-9}+)?
 <variable> ::= {a-zA-Z_} {a-zA-Z0-9_}*
